@@ -1,0 +1,13 @@
+# 베이스 이미지
+FROM node:alpine
+
+#COPY 문제, root로 접근 하지 않고 이 디렉토리로 접근해서 보여줌, 이 디렉토리에는 어플리케이션과 관련된 소스들만 들어감
+WORKDIR /usr/src/app
+
+COPY package.json ./
+
+RUN npm install
+
+COPY ./ ./
+
+CMD ["npm", "run", "start"]
